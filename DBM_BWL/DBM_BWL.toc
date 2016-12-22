@@ -1,0 +1,21 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly BWL Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 黑翼之巢
+## Notes: Boss Mods for Blackwing Lair
+## Notes-zhCN: Deadly Boss Mod 的黑翼之巢模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+Razorgore.lua
+Vaelastrasz.lua
+Firemaw.lua
+Ebonroc.lua
+Flamegor.lua
+Chromaggus.lua
+Nefarian.lua
+Bosses.lua

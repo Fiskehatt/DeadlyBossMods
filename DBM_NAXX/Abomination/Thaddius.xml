@@ -1,0 +1,66 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	<Frame name="DBM_ThaddiusLeftFrame" frameStrata="HIGH" parent="UIParent" movable="true" hidden="true">
+		<Size>
+			<AbsDimension x="64" y="64"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="-100" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="DBM_ThaddiusLeftTexture" file="Interface\AddOns\DBM_NAXX\Abomination\Images\left"/>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="DBM_ThaddiusRightFrame" frameStrata="HIGH" parent="UIParent" movable="true" hidden="true"> 
+		<Size>
+			<AbsDimension x="64" y="64"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="100" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="DBM_ThaddiusRightTexture" file="Interface\AddOns\DBM_NAXX\Abomination\Images\right"/>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<ScrollingMessageFrame name="DBM_ThaddiusMsgFrame" frameStrata="HIGH" parent="UIParent" insertMode="TOP">
+		<Size>
+			<AbsDimension x="800" y="55"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="DBM_ThaddiusFrame" relativePoint="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="-175"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<FontString inherits="MasterFont" font="Fonts\FZXHJW.TTF" justifyH="CENTER">
+			<FontHeight>
+				<AbsValue val="32"/>
+			</FontHeight>
+		</FontString>
+		<Scripts>
+			<OnLoad>
+				DBM_ThaddiusLeftFrame:SetScale(2.0);
+				DBM_ThaddiusRightFrame:SetScale(2.0);
+				DBM_ThaddiusLeftTexture:SetVertexColor(0,1,0);
+				DBM_ThaddiusRightTexture:SetVertexColor(0,1,0);
+				DBM_ThaddiusLeftFrame:Hide();
+				DBM_ThaddiusRightFrame:Hide();
+			</OnLoad>
+		</Scripts>
+	</ScrollingMessageFrame>
+
+</Ui>

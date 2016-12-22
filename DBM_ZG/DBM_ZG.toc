@@ -1,0 +1,21 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly ZG Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 祖尔格拉布
+## Notes: Boss Mods for Zul'Gurub
+## Notes-zhCN: Deadly Boss Mod 的祖尔格拉布模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+Jeklik.lua
+Venoxis.lua
+Marli.lua
+Mandokir.lua
+Arlokk.lua
+Hakkar.lua
+Jindo.lua
+Bosses.lua

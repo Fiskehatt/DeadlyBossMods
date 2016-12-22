@@ -1,0 +1,20 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly AQ20 Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 安其拉废墟
+## Notes: Boss Mods for AQ20 (Ruins)
+## Notes-zhCN: Deadly Boss Mod 的安其拉废墟模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+Rajaxx.lua
+Moam.lua
+Buru.lua
+Ayamiss.lua
+Ossirian.lua
+AnubisathGuardians.lua
+Bosses.lua

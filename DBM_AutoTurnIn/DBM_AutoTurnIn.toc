@@ -1,0 +1,12 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly Boss Mods Auto Turn-in Plugin|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod 自动上交|r
+## Notes-zhCN: Deadly Boss Mod 的自动上交物品模块
+## Author: Nitram, DiabloHu
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.tw.lua
+localization.cn.lua
+Runecloth.lua
+Timbermaw.lua

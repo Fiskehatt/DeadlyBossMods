@@ -1,0 +1,21 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly MC Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 熔火之心
+## Notes: Boss Mods for MoltenCore
+## Notes-zhCN: Deadly Boss Mod 的熔火之心模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+Lucifron.lua
+Magmadar.lua
+Gehennas.lua
+Geddon.lua
+Shazzrah.lua
+Majordomo.lua
+Ragnaros.lua
+Bosses.lua

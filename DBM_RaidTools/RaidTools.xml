@@ -1,0 +1,341 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+	..\FrameXML\UI.xsd">
+
+	<Script file="RaidTools.lua"/>
+
+	<Frame name="DBM_RaidTools" hidden="true">
+		<Scripts>
+			<OnLoad>
+				DM_RaidTools:OnLoad();
+			</OnLoad>
+			<OnEvent>
+				DM_RaidTools:OnEvent();
+			</OnEvent>
+		</Scripts>
+	</Frame>
+
+
+
+
+
+
+	<!-- some parts of this XML code are copied from CTRA -->
+	<Button name="DRT_DurabilityTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="280" y="15"/>
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentName" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="LEFT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentInfo" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentMO" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="0.25"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				getglobal(this:GetName() .. "MO"):Show();
+			</OnEnter>
+			<OnLeave>
+				getglobal(this:GetName() .. "MO"):Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+
+
+
+	<Frame name="DBM_DurabilityFrame" enableMouse="true" movable="true" parent="UIParent" hidden="true"> 
+		<Anchors>
+			<Anchor point="CENTER" relativePoint="CENTER" relativeTo="UIParent"/>
+		</Anchors>
+		<Size>
+			<AbsDimension x="300" y="400"/>
+		</Size>
+		<TitleRegion setAllPoints="true"/>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Frames>
+			<Button name="$parentSortButtonName">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="20" y="-35"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="95" y="24"/>
+				</Size>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						
+						if DRT_Dura_SortBy == 1 then
+							DRT_Durability_Sort(2);
+						else
+							DRT_Durability_Sort(1);
+						end
+						
+						DRT_Durability_Update()
+					</OnClick>
+				</Scripts>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBackground">
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+								<Anchor point="BOTTOMRIGHT"/>
+							</Anchors>
+							<Color r="0.4" g="0.4" b="0.4" a="0.4"/>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<FontString inherits="GameFontHighlightSmall" text="DBM_NAME">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(0.6, 0.6, 0.6, 0.6);
+					</OnLoad>
+					<OnEnter>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(1, 1, 1, 1);
+					</OnEnter>
+					<OnLeave>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(0.6, 0.6, 0.6, 0.6);						
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parentSortButtonDura">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentSortButtonName">
+						<Offset>
+							<AbsValue x="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="150" y="24"/>
+				</Size>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						
+						if DRT_Dura_SortBy == 3 then
+							DRT_Durability_Sort(4);
+						else
+							DRT_Durability_Sort(3);
+						end
+						
+						DRT_Durability_Update();
+					</OnClick>
+				</Scripts>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBackground">
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+								<Anchor point="BOTTOMRIGHT"/>
+							</Anchors>
+							<Color r="0.4" g="0.4" b="0.4" a="0.4"/>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<FontString inherits="GameFontHighlightSmall" text="DBM_DURABILITY">
+							<Anchors>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(0.6, 0.6, 0.6, 0.6);
+					</OnLoad>
+					<OnEnter>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(1, 1, 1, 1);
+					</OnEnter>
+					<OnLeave>
+						getglobal(this:GetName() .. "Background"):SetVertexColor(0.6, 0.6, 0.6, 0.6);
+					</OnLeave>
+				</Scripts>
+			</Button>
+
+
+			<Button name="$parentPlayer1" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSortButtonName" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer2" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer1" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer3" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer2" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer4" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer3" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer5" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer4" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer6" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer5" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer7" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer6" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer8" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer7" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer9" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer8" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer10" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer9" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer11" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer10" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer12" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer11" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer13" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer12" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer14" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer13" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer15" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer14" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer16" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer15" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer17" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer16" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer18" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer17" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentPlayer19" inherits="DRT_DurabilityTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPlayer18" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="260" y="320"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="-32"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(19, DRT_Durability_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+
+
+			<Button name="$parentCloseButton" hidden="false" inherits="GameMenuButtonTemplate" text="Close">
+				<Size>
+					<AbsDimension x="100" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						this:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+
+		<Scripts> 
+			<OnLoad> 
+				this:SetBackdropBorderColor(0.9, 0.82, 0.0);
+				this:SetBackdropColor(0, 0, 0);
+			</OnLoad>
+			<OnShow>
+				DRT_Durability_Update();
+			</OnShow>	
+		</Scripts> 
+	</Frame>
+
+</Ui>

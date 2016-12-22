@@ -1,0 +1,17 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly Battleground Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 战场
+## Notes: Battleground Mods
+## Notes-zhCN: Deadly Boss Mod 的战场模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.tw.lua
+localization.cn.lua
+Battlegrounds.lua
+Arathi.lua
+Alterac.lua
+Warsong.lua
+EyeOfTheStorm.lua

@@ -1,0 +1,24 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly AQ40 Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 安其拉神殿
+## Notes: Boss Mods for AQ40 (Temple)
+## Notes-zhCN: Deadly Boss Mod 的安其拉神殿模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.tw.lua
+localization.cn.lua
+localization.fr.lua
+Skeram.lua
+ThreeBugs.lua
+Sartura.lua
+Fankriss.lua
+Viscidus.lua
+Huhuran.lua
+Defender.lua
+TwinEmps.lua
+CThun.lua
+Ouro.lua
+Bosses.lua

@@ -1,0 +1,18 @@
+﻿## Interface: 11200
+## Title: |cff0055FFDeadly Outdoor Boss Mods|r
+## Title-zhCN: |cff0055FFDeadly Boss Mod|r 户外首领
+## Notes: Boss Mods for Outdoor Bosses
+## Notes-zhCN: Deadly Boss Mod 的户外首领模块
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM_API
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+Kazzak.lua
+Onyxia.lua
+OutdoorDragons.lua
+Azuregos.lua
+Bosses.lua
